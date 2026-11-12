@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d20">
+  <title>TUCK — Password Peek Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="browser-chrome">
+    <div class="traffic"><i></i><i></i><i></i></div>
+    <div class="chrome-title">TUCK — <b>HTML</b> · <strong>CSS</strong> · <em>JS</em></div>
+    <div class="chrome-path">Signup / Tuck</div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="brand"><span class="brand-dot"></span> TUCK</div>
+      <h1 id="headline">Watching</h1>
+      <p id="tagline">Tuck follows your caret.</p>
+      <div class="mascot" aria-hidden="true"><span class="snail">🐌</span><span class="shell">🟠</span></div>
+
+      <form class="signup-card" id="signupForm" novalidate>
+        <h2>Create your account</h2>
+        <p>It's easy to make a little account.</p>
+        <label class="sr-only" for="email">Email address</label>
+        <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+        <div class="password-wrap">
+          <label class="sr-only" for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Password" autocomplete="new-password" required minlength="8">
+          <button class="eye-button" id="eyeButton" type="button" aria-label="Show password" aria-pressed="false">
+            <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 3 18 18M10.6 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3 3.8M6.2 6.2C3.5 8 2 12 2 12s3.6 7 10 7a10 10 0 0 0 4-.8"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+          </button>
+        </div>
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="submit-button" type="submit" id="submitButton">Create account</button>
+      </form>
+      <p class="tip" id="tip">Type a password — or tap <b>Show</b></p>
+    </section>
+
+    <section class="code-panels" aria-label="Source code overview">
+      <article class="code-panel html-panel">
+        <div class="panel-title"><span class="file-dot orange"></span> index.html</div>
+        <pre><code><em>&lt;form</em> id=<b>"signupForm"</b><em>&gt;</em>
+  <em>&lt;input</em> type=<b>"email"</b>
+    placeholder=<b>"Email"</b><em>&gt;</em>
+  <em>&lt;div</em> class=<b>"password-wrap"</b><em>&gt;</em>
+    <em>&lt;input</em> id=<b>"password"</b>
+      type=<b>"password"</b><em>&gt;</em>
+    <em>&lt;button</em> id=<b>"eyeButton"</b><em>&gt;</em>
+      Show / Hide
+    <em>&lt;/button&gt;</em>
+  <em>&lt;/div&gt;</em>
+  <em>&lt;button</em> type=<b>"submit"</b><em>&gt;</em>
+    Create account
+  <em>&lt;/button&gt;</em>
+<em>&lt;/form&gt;</em></code></pre>
+      </article>
+      <article class="code-panel css-panel">
+        <div class="panel-title"><span class="file-dot blue"></span> tuck.css</div>
+        <pre><code><comment>/* password visibility states */</comment>
+<em>.password-wrap</em> {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+<em>.eye-button</em> {
+  position: absolute;
+  right: 8px;
+  border: 0;
+  color: #aab6d1;
+  background: transparent;
+  cursor: pointer;
+}
+<em>.hero</em> {
+  background: radial-gradient(
+    circle, #102e64, #080d20 70%);
+}</code></pre>
+      </article>
+      <article class="code-panel js-panel">
+        <div class="panel-title"><span class="file-dot yellow"></span> mascot.js</div>
+        <pre><code><pink>const</pink> password = document
+  .querySelector(<b>"#password"</b>);
+<pink>const</pink> eyeButton = document
+  .querySelector(<b>"#eyeButton"</b>);
+
+eyeButton.addEventListener(<b>"click"</b>, () =&gt; {
+  <pink>const</pink> visible =
+    password.type === <b>"password"</b>;
+  password.type = visible
+    ? <b>"text"</b> : <b>"password"</b>;
+  eyeButton.setAttribute(
+    <b>"aria-pressed"</b>, String(visible)
+  );
+});</code></pre>
+      </article>
+    </section>
+    <footer><span class="footer-brand">TUCK</span><span>Password Peek Demo</span><span class="footer-right">HTML · CSS · JS</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
